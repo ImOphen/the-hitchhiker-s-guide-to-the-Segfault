@@ -42,19 +42,31 @@ note that the following segfault also works on **minishell** since it uses the e
 in minishell, there is a lot of cases to explore, since you can give it an infinite number of inputs and therefore possibilities, i personally found over 15 segfaults in some minishell projects in total, i will here show you those i encountred the most :
 the easiest segfaults to exploit are in the built-in commands, lets try with **cd** :
 `mkdir test`
+
 `cd test`
+
 `rm -rf ../test`
+
 `cd .`
+
 `pwd or ls or anything`(you can also try 'cd .' again, i've seen it segfaults once)
+
 (getcwd will return NULL in this case as the current directory doesnt exist anymore, if this goes unchecked, the program will segfault)
 another built-in commands in minishell that are easy to exploit, are the **unset** and **export** commands as they control the envirement variables and take arguments
 `export ""`
+
 `unset ""`
+
 `export test=`
+
 `export =test`
+
 `export =`
+
 `export "==="`
+
 `export '= = ='` 
+
 you get it, try as much inputs that doesnt make sense as you want, i ve seen this segfaults many minishell projects...
 you can also try and pass an empty string as a command like this `""`
 
