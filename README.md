@@ -21,11 +21,17 @@ buckle up, lets go !
 so_long is a 2D game project, that **TAKES A MAP AS AN ARGUMENT** and renders it on a new window where you can play, in here, there is a lot of things to exploit...
 to read the file, we need to open it, right ?, what if we give it a file that doesnt exist, or that doesnt have permission to ?, what if we give an empty map or a maps that has a bunch of null characters inside it ?
 here are few commands you should try: 
+
 `./so_long` (if number of arguments isnt checked)
+
 `./so_long ""` (the name of the file has to be checked if it ends with .ber before its openned)
+
 `touch map.ber && chmod 0 map.ber && ./so_long map.ber` (the open function will return -1 as an fd)
+
 `cp /dev/null map1.ber && ./so_long map1.ber` (get_next_line will return null from the start)
+
 `echo > map.ber && ./so_long map.ber` (file with only a new line)
+
 the file contents has to be checked to see if the map is valid, feel free to try a map with open walls, two players, incomplete maps, maps with new lines at the start or at the end or even in between lines, feel free to explore and experiment with the content of the maps :D
 you can try the last tests on **fdf** too, and you can also try these : 
 in fdf, if we are given a color in the map EX : *'10,0xFF0000'* (RED point of height 10) we have to display the point in that color, if we are not given a color like *'10'*, we default to white, many people use *strchr* with the character *','* and checks if it returns NULL to default to white, or then convert the HEX to an int to display it as a color, this can also be exploited by giving in the map a number with a comma in it but no HEX number, like this *'10,'*, a lot of people will work on the eight character after a comma, which is in this case, beyond the '\0' and results in a segfault.
