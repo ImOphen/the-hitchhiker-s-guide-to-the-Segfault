@@ -59,33 +59,37 @@ in minishell, there are a lot of cases to explore, since you can give it an infi
 
 the easiest segfaults to exploit are in the built-in commands, let's try with **cd** :
 
-`mkdir test`
+```
+mkdir test
 
-`cd test`
+cd test
 
-`rm -rf ../test`
+rm -rf ../test
 
-`cd .`
+cd .
 
-`pwd or ls or anything`(you can also try 'cd .' again, I've seen it segfaults once)
+pwd or ls or anything (you can also try 'cd .' again, I've seen it segfaults once)
+```
 
 (getcwd will return NULL in this case as the current directory doesn't exist anymore, if this goes unchecked, the program will segfault)
 
 another built-in commands in minishell that are easy to exploit, are the **unset** and **export** commands as they control the environment variables and take arguments
 
-`export ""`
+```
+export ""
 
-`unset ""`
+unset ""
 
-`export test=`
+export test=
 
-`export =test`
+export =test
 
-`export =`
+export =
 
-`export "==="`
+export "==="
 
-`export '= = ='` 
+export '= = ='
+```
 
 You get it, try as many inputs that doesn't make sense as you want, i ve seen these segfaults many minishell projects...
 
