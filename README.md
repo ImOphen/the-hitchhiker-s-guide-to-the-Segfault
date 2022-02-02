@@ -7,8 +7,6 @@ keep in mind that most of the segfaults that you will find are basic ones, as an
 
 That being said, please read the code carefully and pay attention to details, that's how you find holes in the code :3
 
-I will be ignoring the first 3 42 projects (libft, gnl, printf) in this README, as most of the people validated them already, the excess of checkers for those projects out there, and the simplicity of those projects...
-
 I will also be updating regularly this README as I am doing more projects and learning/exploring more about them.
 
 If you have any suggestions, ideas, or anything you would want to talk to me about, feel free to contact me on discord : Ophen#3689
@@ -103,6 +101,10 @@ In push swap, there isn't much to segfault to be honest, feel free to try `"5-"`
 in minitalk, it is really hard to crash it since the program barely takes any input and there is zero allocation for most projects I've seen, as always, feel free to try empty strings as arguments, more or less parameters than expected, a string instead of the pid for the client etc...
 
 Same thing goes for fract-ol, a project that takes one argument, you can hit it with the classic empty string and wrong number of arguments, but besides that, i m pretty sure you will find quite few unprotected mallocs there that you could exploit
+
+## get_next_line 
+
+compile with the max BUFFER_SIZE you can, aim for the max value the compiler allows you to, it will either segfault or abort 90% of the time if buffer_size value goes unchecked
 
 ------------------------------
 Well that's it for now, as I said earlier, most of the segfaults you'll ever find in projects are the ones you're going to have to read the code pretty well for, I'll say it again and again, check every single allocation if it is protected or not because not everyone keeps track of the return of the function that allocates, I will be updating this README when I do future projects / find more ways to segfault older projects.
