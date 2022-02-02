@@ -1,7 +1,7 @@
 # the hitchhiker's guide to the Segfault
 ------------------------------
 
-The goal of this repository is to make you know what are the extreme cases that can be tested, in order to handle them and have a complete and perfect project
+The goal of this repository is to make you know what are the extreme cases that can be tested, in order to handle them and have a complete and perfect project && learn more about error handling and taking input / parse data the right way
 
 keep in mind that most of the segfaults that you will find are basic ones, as an example, not checking the count of arguments (argc) very well, therefore you can give fewer arguments than expected which results in a segfault in general, or unprotected malloc functions (I've seen a trend of people protecting the malloc but not checking the return of the function, in this case, the program will also segfault since the program will just start working with NULL, check your mallocs very well and keep track of the return, or use exit() when the allocation fails **if the project allows to**)...
 
