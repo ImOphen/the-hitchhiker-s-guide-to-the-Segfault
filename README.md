@@ -20,6 +20,7 @@ buckle up, lets go !
 ## so_long and FDF:
 so_long is a 2D game project, that **TAKES A MAP AS AN ARGUMENT** and renders it on a new window where you can play, in here, there is a lot of things to exploit...
 to read the file, we need to open it, right ?, what if we give it a file that doesnt exist, or that doesnt have permission to ?, what if we give an empty map or a maps that has a bunch of null characters inside it ?
+
 here are few commands you should try: 
 
 `./so_long` (if number of arguments isnt checked)
@@ -33,13 +34,18 @@ here are few commands you should try:
 `echo > map.ber && ./so_long map.ber` (file with only a new line)
 
 the file contents has to be checked to see if the map is valid, feel free to try a map with open walls, two players, incomplete maps, maps with new lines at the start or at the end or even in between lines, feel free to explore and experiment with the content of the maps :D
+
 you can try the last tests on **fdf** too, and you can also try these : 
+
 in fdf, if we are given a color in the map EX : *'10,0xFF0000'* (RED point of height 10) we have to display the point in that color, if we are not given a color like *'10'*, we default to white, many people use *strchr* with the character *','* and checks if it returns NULL to default to white, or then convert the HEX to an int to display it as a color, this can also be exploited by giving in the map a number with a comma in it but no HEX number, like this *'10,'*, a lot of people will work on the eight character after a comma, which is in this case, beyond the '\0' and results in a segfault.
+
 also feel free to try map with a spaces only, new lines only, a mix of both, etc...
 
 ## philosophers
 as always try empty strings as an input whenever you can, more or less arguments than expected...
+
 the philosopher program takes 4 to 5 arguments that are, number of philosophers, time to die, time to eat, and time to sleep, try to give it 0 or negative numbers, or even strings (will be converted to 0 if atoi is used), if those parameters go through and the program doesnt check them, it will segfault.
+
 EXAMPLE : trying to allocate a negative number will force the allocation to fail, if the number of philosophers is included in the malloc function and it is negative, and the return value goes unchecked, the program will segfault
 
 ## pipex and minishell
@@ -48,6 +54,7 @@ as always try empty strings as an input whenever you can, more or less arguments
 note that the following segfault also works on **minishell** since it uses the envirement variables too :
 
 `env -i ./pipex infile ls cat outfile` or `env -i ./minishell` (starts the program with an empty envirement, which if it is not checked, the program segfaults)
+
 in minishell, there is a lot of cases to explore, since you can give it an infinite number of inputs and therefore possibilities, i personally found over 15 segfaults in some minishell projects in total, i will here show you those i encountred the most :
 
 the easiest segfaults to exploit are in the built-in commands, lets try with **cd** :
@@ -81,10 +88,12 @@ another built-in commands in minishell that are easy to exploit, are the **unset
 `export '= = ='` 
 
 you get it, try as much inputs that doesnt make sense as you want, i ve seen this segfaults many minishell projects...
+
 you can also try and pass an empty string as a command like this `""`
 
 ## PUSH_SWAP
 as always try empty strings as an input whenever you can, more or less arguments than expected...
+
 in push swap, there isnt much to segfault to be honest, feel free to try "5-" or "--5" or '-' or even '- -' as arguments, this rarely works but you never know :P
 
 
