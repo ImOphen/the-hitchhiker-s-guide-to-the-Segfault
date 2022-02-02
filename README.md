@@ -91,11 +91,14 @@ you get it, try as much inputs that doesnt make sense as you want, i ve seen thi
 
 you can also try and pass an empty string as a command like this `""`
 
-## PUSH_SWAP
+## PUSH_SWAP, Minitalk, Fract-ol
 as always try empty strings as an input whenever you can, more or less arguments than expected...
 
-in push swap, there isnt much to segfault to be honest, feel free to try "5-" or "--5" or '-' or even '- -' as arguments, this rarely works but you never know :P
+in push swap, there isnt much to segfault to be honest, feel free to try `"5-"` or `"--5"` or `'-'` or even `'- -'` as arguments, this rarely works but you never know :P
 
+in minitalk, it is really hard to crash it since the program barely takes any input and there is zero allocation for most projects i've seen, as always, feel free to try empty strings as arguments, more or less parameters than expected, a string instead of the pid for the client etc...
+
+same thing goees for fract-ol, a project that takes one argument, you can hit it with the classic empty string and wrong number of arguments, but besides that, i m pretty sure you will find quite few unprotected mallocs there that you could exploit
 
 ------------------------------
 well that's it for now, as i said earlier, most of the segfaults you'll ever find in projects are the one you're going to have to read the code pretty well for, i'll say it again and again, check every single allocation if it is protected or not because not everyone keeps track of the return of the function that allocates, i will be updating this readme when i do future projects / find more ways to segfault older projects.
