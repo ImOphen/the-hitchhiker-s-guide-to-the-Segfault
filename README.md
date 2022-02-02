@@ -41,6 +41,7 @@ note that the following segfault also works on **minishell** since it uses the e
 `env -i ./pipex infile ls cat outfile` or `env -i ./minishell` (starts the program with an empty envirement, which if it is not checked, the program segfaults)
 in minishell, there is a lot of cases to explore, since you can give it an infinite number of inputs and therefore possibilities, i personally found over 15 segfaults in some minishell projects in total, i will here show you those i encountred the most :
 the easiest segfaults to exploit are in the built-in commands, lets try with **cd** :
+
 `mkdir test`
 
 `cd test`
@@ -53,6 +54,7 @@ the easiest segfaults to exploit are in the built-in commands, lets try with **c
 
 (getcwd will return NULL in this case as the current directory doesnt exist anymore, if this goes unchecked, the program will segfault)
 another built-in commands in minishell that are easy to exploit, are the **unset** and **export** commands as they control the envirement variables and take arguments
+
 `export ""`
 
 `unset ""`
