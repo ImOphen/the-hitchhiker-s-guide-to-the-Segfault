@@ -53,7 +53,7 @@ as always, try empty strings as an input whenever you can, more or less argument
 
 Note that the following segfault also works on **minishell** and **pipex** too since it uses the environment variables too :
 
-`env -i ./pipex infile ls cat outfile` or `env -i ./minishell` (starts the program with an empty environment, which is not checked, the program segfaults)
+`env -i ./pipex infile ls cat outfile` or `env -i ./minishell` (starts the program with an empty environment, which if it is not checked, the program segfaults)
 
 in minishell, there are a lot of cases to explore, since you can give it an infinite number of inputs and therefore possibilities, I personally found over 15 segfaults in some minishell projects in total, I will here show you those i encountred the most :
 
