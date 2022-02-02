@@ -37,6 +37,8 @@ you can try the last tests on **fdf** too, and you can also try these : 
 
 In fdf, if we are given a color in the map EX : *'10,0xFF0000'* (RED point of height 10) we have to display the point in that color, if we are not given a color like *'10'*, we default to white, many people use *strchr* with the character *','* and checks if it returns NULL to default to white, or then convert the HEX to an int to display it as a color, this can also be exploited by giving in the map a number with a comma in it but no HEX number, like this *'10,'*, a lot of people will work on the eight character after a comma, which is in this case, beyond the '\0' and results in a segfault.
 
+*NOTE : for this case, Strnstr can be used also to find ",0x" or "0x", in which case you'll have to add "10,0x" to try this exploit, try your best to read the code and find the right vulnerabilities*
+
 Also feel free to try a map with spaces only, new lines only, a mix of both, etc...
 
 ## philosophers
