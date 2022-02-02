@@ -51,7 +51,7 @@ EXAMPLE : trying to allocate a negative number will force the allocation to fail
 ## pipex and minishell
 as always try empty strings as an input whenever you can, more or less arguments than expected, a non existing infile, or remove the permission for the infile and outfile with chmod 0...
 
-note that the following segfault also works on **minishell** since it uses the envirement variables too :
+note that the following segfault also works on **minishell** and **pipex** too since it uses the envirement variables too :
 
 `env -i ./pipex infile ls cat outfile` or `env -i ./minishell` (starts the program with an empty envirement, which if it is not checked, the program segfaults)
 
