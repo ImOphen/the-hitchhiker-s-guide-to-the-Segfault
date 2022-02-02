@@ -1,4 +1,5 @@
 # the hitchhiker's guide to the Segfault
+------------------------------
 
 The goal of this repository is to make you know what are the extreme cases that can be tested, in order to handle them and have a complete and perfect project
 
