@@ -38,9 +38,12 @@ EXAMPLE : trying to allocate a negative number will force the allocation to fail
 
 ## pipex and minishell
 as always try empty strings as an input whenever you can, more or less arguments than expected, a non existing infile, or remove the permission for the infile and outfile with chmod 0...
+
 note that the following segfault also works on **minishell** since it uses the envirement variables too :
+
 `env -i ./pipex infile ls cat outfile` or `env -i ./minishell` (starts the program with an empty envirement, which if it is not checked, the program segfaults)
 in minishell, there is a lot of cases to explore, since you can give it an infinite number of inputs and therefore possibilities, i personally found over 15 segfaults in some minishell projects in total, i will here show you those i encountred the most :
+
 the easiest segfaults to exploit are in the built-in commands, lets try with **cd** :
 
 `mkdir test`
@@ -54,6 +57,7 @@ the easiest segfaults to exploit are in the built-in commands, lets try with **c
 `pwd or ls or anything`(you can also try 'cd .' again, i've seen it segfaults once)
 
 (getcwd will return NULL in this case as the current directory doesnt exist anymore, if this goes unchecked, the program will segfault)
+
 another built-in commands in minishell that are easy to exploit, are the **unset** and **export** commands as they control the envirement variables and take arguments
 
 `export ""`
