@@ -21,15 +21,15 @@ To read the file, we need to open it, right ?, what if we give it a file that do
 
 Here are few commands you should try: 
 
-`./so_long` (if number of arguments isn't checked)
+`./so_long` (if number of arguments isn't checked, this will result in a segfault)
 
-`./so_long ""` (the name of the file has to be checked if it ends with .ber before it is  opened)
+`./so_long ""` (the name of the file has to be checked if it ends with .ber before it is  opened, this may result in a segfault)
 
-`touch map.ber && chmod 0 map.ber && ./so_long map.ber` (the open function will return -1 as an fd)
+`touch map.ber && chmod 0 map.ber && ./so_long map.ber` (the open function will return -1 as an fd, may result in a segfault if program doesnt stop)
 
-`cp /dev/null map1.ber && ./so_long map1.ber` (get_next_line will return null from the start)
+`cp /dev/null map1.ber && ./so_long map1.ber` (get_next_line will return null from the start, may result in a segfault if program doesnt stop)
 
-`echo > map.ber && ./so_long map.ber` (file with only a new line)
+`echo > map.ber && ./so_long map.ber` (file with only a new line, may result in a segfault)
 
 the file content has to be checked to see if the map is valid, feel free to try a map with open walls, two players, incomplete maps, maps with new lines at the start or at the end or even in between lines, feel free to explore and experiment with the content of the maps :D
 
