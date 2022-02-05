@@ -55,6 +55,8 @@ Note that the following segfault also works on **minishell** and **pipex** too s
 
 `env -i ./pipex infile ls cat outfile` or `env -i ./minishell` (starts the program with an empty environment, which if it is not checked, the program segfaults)
 
+you can also unset the `PATH` variable in bash or zsh and run pipex or minishell (and try few commands such as ls), i've seen this segfault a few times
+
 in minishell, there are a lot of cases to explore, since you can give it an infinite number of inputs and therefore possibilities, I personally found over 15 segfaults in some minishell projects in total, I will here show you those i encountred the most :
 
 the easiest segfaults to exploit are in the built-in commands, let's try with **cd** :
