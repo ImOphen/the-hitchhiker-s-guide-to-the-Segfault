@@ -15,6 +15,20 @@ a lot of segfaults methods will look a lot alike for multiple projects that take
 
 buckle up, let's go !
 
+## cub3d :
+man there is a lot of things that can go wrong in this project, as always, use more or less arguments than expected,test the empty string as an argument, like `./cub3d ""`, an empty `map.cub` file, or a file you don't have permission to...
+since cub3d takes a map file as argument, there is a lot of input possibilities that can crash the code successfully, for example giving duplicate values, not giving a value, giving a texture file that doesnt exist, and most importantly, a segfault that few people know about and that i found a lot of times, is giving an invalid XPM file as a texture, (you can create it with `touch test.xpm`, its going to be empty and therefore invalid), the mlx_xpm_file_to_img function will place a Null pointer in our void \*img which will result in a segfault if the value goes unchecked...
+feel free to play around with the colors too, giving only the R value for exmaple `F 30,` will result in a segfault if strchr is used to find the commas for the other values and the result goes unchecked.
+once again, 99% of the segfaults you will find are just by reading the code, so please read it carefully, see if the return of memory allocations is always checked etc.
+a segfault that is really hard to prove its existence even tho we know it exists is if you cast a ray just between two blocks at the corners at the right angle, the ray will go on for the infinity since no wall is there, example of a map where the problem can happen :
+```
+1111111
+1000W001
+11111111
+```
+if you go at the top right corner and cast a ray in the corner from the right angle, it will certainly segfault, (it is the case for most cub3d projects, no one fixes the problem tho since there's no real way to fixing it plus you'll never encounter this case as it needs to be casted pricesly at a small point with the right angle)
+play with the map as you wish, it is your only door to segfault the project, Good luck :D
+
 ## so_long and FDF:
 So_long is a 2D game project, that **TAKES A MAP AS AN ARGUMENT** and renders it on a new window where you can play, in here, there are a lot of things to exploit...
 To read the file, we need to open it, right ?, what if we give it a file that doesn't exist, or that doesn't have permission to ?, what if we give an empty map or a map that has a bunch of null characters inside it ?
